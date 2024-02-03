@@ -1,15 +1,15 @@
 import UIKit
 
 final class GradientView: UIView {
-
-    override var bounds: CGRect {
-        get { super.bounds }
-        set { updateBounds(newValue) }
-    }
-
+	
+	override var bounds: CGRect {
+		get { super.bounds }
+		set { updateBounds(newValue) }
+	}
+	
 	private let gradientLayer = CAGradientLayer()
 	private let shadowLayer = CALayer()
-
+	
 	init(config: GradientView.Config = .default) {
 		super.init(frame: .zero)
 		setup(config: config)
@@ -18,15 +18,15 @@ final class GradientView: UIView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
-    private func updateBounds(_ newBounds: CGRect) {
-        super.bounds = newBounds
-
-        gradientLayer.frame = bounds
-        shadowLayer.frame = bounds
-        shadowLayer.shadowPath = CGPath(rect: bounds, transform: nil)
-    }
-
+	
+	private func updateBounds(_ newBounds: CGRect) {
+		super.bounds = newBounds
+		
+		gradientLayer.frame = bounds
+		shadowLayer.frame = bounds
+		shadowLayer.shadowPath = CGPath(rect: bounds, transform: nil)
+	}
+	
 	private func setup(config: GradientView.Config) {
 		layer.addSublayer(shadowLayer)
 		layer.addSublayer(gradientLayer)

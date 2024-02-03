@@ -2,7 +2,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 	private let squareView = GradientView()
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
@@ -11,9 +11,9 @@ final class ViewController: UIViewController {
 	private func setupUI() {
 		view.backgroundColor = .white
 		view.addSubview(squareView)
-
+		
 		squareView.translatesAutoresizingMaskIntoConstraints = false
-
+		
 		NSLayoutConstraint.activate([
 			squareView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Layout.leadingOffset),
 			squareView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
