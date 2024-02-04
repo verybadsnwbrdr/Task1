@@ -8,7 +8,6 @@ final class GradientView: UIView {
 	}
 	
 	private let gradientLayer = CAGradientLayer()
-	private let shadowLayer = CALayer()
 	
 	init(config: GradientView.Config = .default) {
 		super.init(frame: .zero)
@@ -21,24 +20,20 @@ final class GradientView: UIView {
 	
 	private func updateBounds(_ newBounds: CGRect) {
 		super.bounds = newBounds
-		
 		gradientLayer.frame = bounds
-		shadowLayer.frame = bounds
-		shadowLayer.shadowPath = CGPath(rect: bounds, transform: nil)
 	}
 	
 	private func setup(config: GradientView.Config) {
-		layer.addSublayer(shadowLayer)
+		layer.shadowColor = config.shadowColor
+		layer.shadowRadius = config.cornerRadius
+		layer.shadowOpacity = config.shadowOpacity
+		layer.shadowOffset = config.shadowOffset
+		
 		layer.addSublayer(gradientLayer)
 		
 		gradientLayer.startPoint = .zero
 		gradientLayer.colors = config.gradientColors
 		gradientLayer.cornerRadius = config.cornerRadius
-		
-		shadowLayer.shadowColor = config.shadowColor
-		shadowLayer.shadowRadius = config.cornerRadius
-		shadowLayer.shadowOpacity = config.shadowOpacity
-		shadowLayer.shadowOffset = config.shadowOffset
 	}
 }
 
